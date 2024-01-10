@@ -1,6 +1,6 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
+  "index": "👾 Welcome to Drift Protocol",
+  "about-v2": "About Drift v2",
   "advanced": "Advanced (A Folder)",
   "about": {
     "title": "About",
@@ -9,7 +9,7 @@
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://twitter.com/DriftProtocol",
     "newWindow": true
   }
 }

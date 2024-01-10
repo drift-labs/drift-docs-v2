@@ -2,16 +2,16 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>Drift Protocol v2</span>,
   project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+    link: 'https://github.com/drift-labs',
   },
   chat: {
-    link: 'https://discord.com',
+    link: 'https://discord.gg/driftprotocol',
   },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: 'https://github.com/xentoshi/drift-documentation-v2',
   footer: {
-    text: 'Nextra Docs Template',
+    text: 'Drift Protocol v2 Documentation',
   },
 }
 
