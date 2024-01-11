@@ -1,7 +1,18 @@
 {
   "index": "👾 Welcome to Drift Protocol",
-  "about-v2": "About Drift v2",
-  "advanced": "Advanced (A Folder)",
+  "about-v2": "🏎 About Drift v2",
+  "getting-started": "🏁 Getting Started",
+  "lend-borrow": "🏦 Lend & Borrow",
+  "trading": "📈 Trading",
+  "profit-loss":"💸 Profit & Loss (P&L)",
+  "liquidations": "💀 Liquidations",
+  "market-makers": "🏪 Market Makers",
+  "providing-liquidity": "💧 Providing Liquidity",
+  "insurance-fund": "🏛 Insurance Fund",
+  "risk-and-safety": "📝 Risk and Safety",
+  "security": "🛡 Security",
+  "developer-resources": "🖥 Developer Resources",
+  "glossary": "Glossary",
   "about": {
     "title": "About",
     "type": "page"

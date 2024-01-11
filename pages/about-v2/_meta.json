@@ -1,15 +1,15 @@
 {
-    "understanding-drift": "📖 Understanding Drift Protocol",
-    "drift-amm": "⛲️ Drift AMM",
-    "decentralized-orderbook": "📚 Decentralized Orderbook",
-    "keepers": "🛠 Keepers",
-    "keepers-decentralized-orderbook-faq":"❓ Keepers & Decentralized Orderbook FAQ",
-    "keeper-incentives":"✨ Keeper incentives",
-    "jit-auctions": "🏃‍♂️ Just-in-Time (JIT) Auctions", 
-    "jit-auctions-faq": "❓ Just-in-Time (JIT) Auctions FAQ",
-    "revenue-pool": "🌊 Revenue Pool",
-    "optimizations": "🧩 Optimizations",
-    "program-vault-addresses": "📒 Program/Vault Addresses"
+    "understanding-drift": "Understanding Drift Protocol",
+    "drift-amm": "Drift AMM",
+    "decentralized-orderbook": "Decentralized Orderbook",
+    "keepers": "Keepers",
+    "keepers-decentralized-orderbook-faq":"Keepers & Decentralized Orderbook FAQ",
+    "keeper-incentives":"Keeper incentives",
+    "jit-auctions": "Just-in-Time (JIT) Auctions", 
+    "jit-auctions-faq": "Just-in-Time (JIT) Auctions FAQ",
+    "revenue-pool": "Revenue Pool",
+    "optimizations": "Optimizations",
+    "program-vault-addresses": "Program/Vault Addresses"
 
 
   }

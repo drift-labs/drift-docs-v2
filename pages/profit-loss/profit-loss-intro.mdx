@@ -1,0 +1,56 @@
+# Introduction to Profit & Loss
+
+
+Profit and Loss, often referred to as P&L or PnL, is a term used to describe the current state of a user's active positions while trading. By observing P&L users will be able to determine whether their positions are either in profit or loss.
+
+A user's current position on Drift is the cumulative sum of all their filled orders (increasing, reducing, or closing) over time. All trading lots, per market and per subaccount, are combined into a single position to determine P&L.  
+
+The position table below shows the **P&L** for the current position. Users can toggle "$" or "%" to change whether they would like to see **P&L** in dollar terms ($) or in percentage terms (%).
+
+![Positions ](public/assets/91KHvPhXhT6hSgWrqKuJP_image.png)
+
+In the above image, the P&L refers to the **unrealised **P&L** or **uPNL** of the open positions (SOL-PERP and ETH-PERP shorts). To realise this P&L, users will have to close their positions.  
+
+The PnL in the table above is calculated as the difference between the position's `Entry Price` with the current oracle price multiplied by the `Size`.
+
+## Withdrawing Realised P&L
+
+A user's realised P&L can only be withdrawn once it has been settled/claimed on-chain.  
+
+**Note:** Realising P&L by closing the position is **_not_** the same as settling/claiming P&L. To withdraw a positive P&L, it must be settled/claimed first. 
+
+### Settling and Claiming your P&L
+
+To update the USDC balances available for withdrawal, your P&L must first be settled and claimed.
+
+To do so, navigate to the `Unrealised PnL` tab and select `Claim`
+
+![](public/assets/exUlUfTpdHsDCKImH_l4z_image.png)
+
+Users can claim positive P&L when:
+
+1.  the open position has been closed or reduced (i.e. your uP&L has been partially or wholly realised); _note: this step is only necessary when the pnl pool balance is limited_
+
+2.  the market's P&L Pool has available balances to claim; and  
+
+3.  their Cost Basis is below the Entry Price for longs or above the Entry Price for shorts.
+
+## What is the difference between Settling P&L and Realising P&L?
+
+The main difference between settling P&L and realising P&L is that realised P&L is available to be withdrawn and used elsewhere whereas settled P&L is not.  
+
+Once realised, your P&L must also be settled and claimed before it can be withdrawn.
+
+### Realised P&L
+
+Realised P&L refers to the profit and loss that is realised by the user when they close their position.  
+
+For example:  
+
+> If you entered a long position on SOL at $30 and SOL is now $60; you would be in profit with an unrealised P&L of $30.  
+
+> Similarly, if you entered a short position on SOL at $30 and SOL is now $15; you would be in profit with an unrealised P&L of $15.  
+
+The profit and loss in both those examples are known as **unrealised P&L** (uP&L) as that position is still open. The uP&L of the position will continuously change as the price of the asset changes.  
+
+Your P&L will not be **realised** until you close your position. Once you close your position, your uP&L will become **realised P&L** and you will be out of that perpetual futures position (i.e. you will no longer have exposure to the price movement of that underlying asset).  

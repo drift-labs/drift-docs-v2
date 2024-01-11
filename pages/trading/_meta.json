@@ -1,0 +1,18 @@
+{
+    "perpetuals-trading":"Perpetuals Trading",
+    "what-are-perpetual-futures":"What are Perpetual Futures?",
+    "funding-rates":"Funding Rates",
+    "spot-margin-trading":"Spot Margin Trading",
+    "spot-faq":"Spot FAQ",
+    "margin":"Margin",
+    "order-types":"Order Types",
+    "all-order-types":"All Order Types",
+    "advanced-orders-faq":"Advanced Orders FAQ",
+    "auction-parameters":"Auction Parameters",
+    "fees":"Fees",
+    "trading-fees":"Trading Fees",
+    "fee-pool":"Fee Pool",
+    "versioned-transactions": "Versioned Transactions",
+    "block-conditions": "Block Conditions",
+    "oracles": "Oracles"
+}
