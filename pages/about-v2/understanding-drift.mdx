@@ -2,13 +2,13 @@
 
 At the application level, Drift Protocol is a decentralized exchange that supports low slippage, low fees, and minimal price impact on all trades. Drift offers **four** primary products:
 
-1.  Spot Trading - [**What is Spot Margin Trading?**](pages/trading/what-is-spot-margin-trading.mdx)
+1.  Spot Trading - [**What is Spot Margin Trading?**](/trading/what-is-spot-margin-trading)
 
-2.  Perpetuals Trading - [**What are Perpetual Futures?**](pages/trading/what-are-perpetual-futures.mdx)
+2.  Perpetuals Trading - [**What are Perpetual Futures?**](/trading/what-are-perpetual-futures)
 
-3.  Borrow & Lend - [**What is Borrow & Land?**](pages/lend-borrow/what-is-lend-borrow.mdx)
+3.  Borrow & Lend - [**What is Borrow & Land?**](/lend-borrow/what-is-lend-borrow)
 
-4.  Passive Liquidity Provision - [**DLP - Drift Liquidity Provider**](pages/providing-liquidity/dlp-drift-liquidity-provider.mdx)
+4.  Passive Liquidity Provision - [**DLP - Drift Liquidity Provider**](/providing-liquidity/dlp-drift-liquidity-provider)
 
 ## The Problem
 
@@ -42,7 +42,7 @@ All market trades (spot and perpetual) that are placed on Drift are routed throu
 
 Auctions are run via a Dutch Auction (where the auction price starts at the better price and linearly moves toward a set worse end price) and market makers compete amongst themselves in speed to fulfil user orders.
 
-_For a more technical breakdown, check out:_[ **Just-in-Time(JIT) Auctions**](pages/about-v2/jit-auctions.mdx)
+_For a more technical breakdown, check out:_[ **Just-in-Time(JIT) Auctions**](/about-v2/jit-auctions)
 
 
 ### Constant Liquidity
@@ -58,7 +58,7 @@ This also means that, even without external makers, Drift Protocol can support n
 
 Many prudent measures in the protocol's design are in place (capped exposure, effective market making, revenue pool utilization, insurance fund rules, etc) to mitigate and isolate the risks of a single market. The AMM needs a reliable oracle of the perpetual market's spot reference asset. For instance, Drift's SOL-PERP market would refer to a SOL/USD spot oracle for a spot reference. Drift currently uses [**Pyth**](https://pyth.network/) for its oracles and can arbitrarily support other sources per market.
 
-_For a more technical breakdown, check out:_[ **Drift AMM**](pages/about-v2/drift-amm.mdx)
+_For a more technical breakdown, check out:_[ **Drift AMM**](/about-v2/drift-amm)
 
 ### Limit Orderbook Liquidity
 
@@ -66,7 +66,7 @@ Drift's decentralised orderbook (DLOB) acts as its third source of liquidity.
 
 Limit orders are orders that trigger and execute on a particular condition. For a full breakdown of what limit orders are, visit: [**Order Types**]();
 
-Limit orders are placed by users on-chain. A network of Keeper Bots ([**Keeper Bots**](pages/about-v2/keepers.mdx)) then sorts the on-chain limit orders into an off-chain orderbook and categorises limit orders from oldest to newest, and largest to smallest.
+Limit orders are placed by users on-chain. A network of Keeper Bots ([**Keeper Bots**](/about-v2/keepers)) then sorts the on-chain limit orders into an off-chain orderbook and categorises limit orders from oldest to newest, and largest to smallest.
 
 Each Keeper maintains its own view of the orderbook (hence the 'decentralised' aspect) and tracks new orders, AMM availability, and the oracle price. If the trigger condition of a limit order is met, the Keeper will submit the limit order and fill it against the AMM. Keepers will also match taker orders with resting limit orders if the conditions are the same.
 
@@ -74,7 +74,7 @@ Keepers are also incentivised to fill the oldest and largest order first. For th
 
 The decentralised orderbook acts as a source of 'resting' liquidity as it rests on the orderbook until either a taker takes it, or the requisite market conditions are met and it's filled against the DAMM.
 
-_For a more technical breakdown, check out:_[ **Decentralised Orderbook FAQ**](pages/about-v2/decentralized-orderbook.mdx).
+_For a more technical breakdown, check out:_[ **Decentralised Orderbook FAQ**](/about-v2/decentralized-orderbook).
 
 
 ## Our core value
