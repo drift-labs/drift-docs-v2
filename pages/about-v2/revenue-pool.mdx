@@ -55,9 +55,9 @@ Within the program, its parameterized by the following **in bold**:
 
 | Field                                             | Description                                                                                                           |
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `max_revenue_withdraw_per_period`                 | the amm's max revenue pool draw per period&#xA;(note this doesn't include bankruptcy resolution)                  |
+| `max_revenue_withdraw_per_period`                 | the amm's max revenue pool draw per period(note this doesn't include bankruptcy resolution)                  |
 | `revenue_withdraw_since_last_settle`          | revenue pool draws on behalf of user pnl since the last settle(note this doesn't include bankruptcy resolution)   |
-| `last_revenue_withdraw_ts`                        | the last timestamp of a revenue withdraw &#xA;(track in order to reset the period)                                    |
+| `last_revenue_withdraw_ts`                        | the last timestamp of a revenue withdraw (track in order to reset the period)                                    |
 
 A perpetual market's amm may draw up to `max_revenue_withdraw_per_period` from the revenue pool every period.
 
@@ -69,7 +69,7 @@ Additionally, for direct draws from the insurance fund, it parameterized by the 
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `quote_settled_insurance`       | settled funds from the insurance fund since inception                                                                                                               |
 | `quote_max_insurance`           | max funds it can settle from insurance fund since inception                                                                                                             |
-| `unrealized_max_imbalance`** ** | max amount of pnl the net users can be owed within a market before:&#xA;1\. draws from insurance are allowed&#xA;2\. initial asset weights for this pnl gets discounted |
+| `unrealized_max_imbalance`** ** | max amount of pnl the net users can be owed within a market before:1\. draws from insurance are allowed2\. initial asset weights for this pnl gets discounted |
 
 Unlike spot markets, perp markets are capped by the max draw from insurance via `quote_max_insurance`
 
