@@ -29,7 +29,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/drift-labs',
   },
-  docsRepositoryBase: 'https://github.com/drift-labs/drift-docs-v2',
+  docsRepositoryBase: 'https://github.com/drift-labs/drift-docs-v2/tree/main',
   chat: {
     link: 'https://discord.gg/driftprotocol',
   },
@@ -44,10 +44,7 @@ const config: DocsThemeConfig = {
   head: function useHead() {
     const { title } = useConfig()
     const { route } = useRouter()
-    const socialCard = 
-    route === '/' || !title
-    ? 'https://nextra.site/og.jpeg'
-    : `https://nextra.site/api/og?title=${title}`
+    const socialCard = 'public/assets/drift-v2.png'
 
     return (
       <>
