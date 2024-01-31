@@ -13,15 +13,23 @@ Each asset counts towards margin for derivatives trading and has a weight applie
 
 **Margin **Parameters****
 
-| **Asset**     | **Initial Asset Weight** | **Maintenance Asset Weight** | **Initial Liability Weight** | **Maintenance Liability Weight** | **IMF Factor** |
+| **Asset**     | **Initial Asset Weight** | **Maintenance Asset Weight** | **Initial Liability Weight** | **Maintenance Liability Weight** | **IMF Factor** | 
 | ------------- | ------------------------ | ---------------------------- | ---------------------------- | -------------------------------- | -------------- |
 | USDC          | 100%                     | 100%                         | 100%                         | 100%                             | 0              |
-| SOL           | 80%                      | 90%                          | 120%                         | 110%                             | 0.003          |
-| mSOL          | 80%                      | 90%                          | 120%                         | 110%                             | 0.003          |
-| wBTC (portal) | 80%                      | 90%                          | 120%                         | 110%                             | 0.105          |
-| wETH (portal) | 80%                      | 90%                          | 120%                         | 110%                             | 0.025          |
-| USDT          | 90%                      | 95%                          | 110%                         | 105%                             | 0.0004         |
-| JitoSOL       | 80%                      | 90%                          | 120%                         | 110%                             | 0.00055        |
+| SOL           | 80%*                      | 90%                          | 120%                         | 110%                             | 0.003          | 
+| mSOL          | 80%*                     | 90%                          | 120%                         | 110%                             | 0.003          | 
+| wBTC (portal) | 80%*                      | 90%                          | 120%                         | 110%                             | 0.105          | 
+| wETH (portal) | 80%*                      | 90%                          | 120%                         | 110%                             | 0.025          | 
+| USDT          | 90%                      | 95%                          | 110%                         | 105%                             | 0.0004         | 
+| JitoSOL       | 80%*                      | 90%                          | 120%                         | 110%                             | 0.00055        | 
+| PYTH          | 50%*                      | 75%                          | 150%                         | 125%                             | 0.00055        |
+| bSOL          | 80%*                      | 90%                          | 120%                         | 110%                             | 0.00055        |
+| JTO           | 50%*                      | 75%                          | 150%                         | 125%                             | 0.00055        | 
+| WIF           | 25%*                      | 50%                          | 175%                         | 150%                             | 0.00055        | 
+| JUP           | 50%*                      | 75%                          | 150%                         | 125%                             | 0.00055        |
+
+Initial Asset Weights are also scaled lower based on notional value of total deposits. As a reference, you can check out UI or the SpotMarket `get_scaled_initial_weight_asset` for this scale factor.
+
 
 The IMF Factor acts as a discount on account size:
 
@@ -38,3 +46,5 @@ An asset's liability weight can be converted into an LTV ratio using:
 | **Asset** | **Initial LTV** | **Max LTV** |
 | --------- | --------------- | ----------- |
 | SOL       | 83.3%           | 90.9%       |
+
+
