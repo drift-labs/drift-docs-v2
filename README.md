@@ -1,6 +1,10 @@
 # Drift Protocol Documentation
 
-This repository contains the source code for the Drift Protocol Docs Website. The website is built using [Nextra](https://nextra.site)).
+This repository contains the source code for the Drift Protocol Docs Website. 
+
+[Drift](https://www.drift.trade/) brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.
+
+The website is built using [Nextra](https://nextra.site).
 
 ## How to Contribute
 
