@@ -16,6 +16,18 @@ const logo = (
 
 const config: DocsThemeConfig = {
   logo: <span><b> Drift Protocol v2</b></span>,
+  primaryHue: 195,
+  primarySaturation: 100,
+
+  banner: {
+    key: 'docs-open-source',
+    dismissible: true,
+    text: (
+      <a href="https://github.com/drift-labs/drift-docs-v2" target="_blank">
+        ✅ Drift Protocol Docs are now open source! Contribute here →
+      </a>
+      )
+    },
     sidebar: {
     titleComponent({ title, type }) {
       if (type === 'separator') {
@@ -72,8 +84,16 @@ const config: DocsThemeConfig = {
     )
   },
   footer: {
-    text: 'Drift Protocol v2 Documentation',
-  },
+    text: (
+      <span>
+        MIT {new Date().getFullYear()} ©{' '}
+        <a href="drift.trade" target="_blank">
+          Drift Protocol
+        </a>
+        .
+      </span>
+    )
+  }
 }
 
 export default config
