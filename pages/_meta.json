@@ -13,8 +13,8 @@
   "security": "🛡 Security",
   "developer-resources": "🖥 Developer Resources",
   "glossary": "Glossary",
-  "about": {
-    "title": "About",
+  "contributing-to-drift": {
+    "title": "Contributing to Drift Protocol",
     "type": "page"
   },
   "contact": {

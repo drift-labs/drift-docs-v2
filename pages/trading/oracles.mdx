@@ -1,3 +1,6 @@
+import { Callout, Card, Cards, Steps } from 'nextra/components'
+
+
 # Oracles
 
 Drift Protocol has a number of resiliency checks around new oracle data as well as updates an oracle twap for its margin risk engine. Each market tracks the last seen oracle values and updates an EMA of TWAP for over both 1hr (funding period) and 5min intervals.
@@ -16,6 +19,11 @@ For robustness, Drift's program checks oracle validity. The validity is evaluate
 
 4\. TooUncertain: Confidence interval is too large (confidence if a very large percentage of the price, **>10%**)
 
-**When the oracle for a Perpetuals Market is deemed invalid, the market can block some order fills, withdraws, liquidations, and funding rate updates (if they increase protocol risk).
+<Callout type="warning" emoji="⚠️"> 
+When the oracle for a Perpetuals Market is deemed invalid, the market can block some order fills, withdraws, liquidations, and funding rate updates (if they increase protocol risk).
 
-**For the duration of the invalid period, on-chain oracle TWAP calculation aims to shrink toward mark TWAP to avoid erroneous funding payment magnitudes.
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+For the duration of the invalid period, on-chain oracle TWAP calculation aims to shrink toward mark TWAP to avoid erroneous funding payment magnitudes.
+</Callout>

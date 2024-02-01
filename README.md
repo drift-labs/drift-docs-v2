@@ -1,22 +1,33 @@
-# Nextra Docs Template 
+# 👾 Drift Protocol Documentation
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+This repository contains the source code for the Drift Protocol Docs Website. 
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+[Drift](https://www.drift.trade/) brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
-
-## Quick Start
-
-Click the button to clone this repository and deploy it on Vercel:
-
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+The website is built using [Nextra](https://nextra.site).
 
 ## Local Development
 
 First, run `pnpm i` to install the dependencies.
 
 Then, run `pnpm dev` to start the development server and visit localhost:3000.
+
+### GitHub Workflow
+
+If you're new to GitHub, we recommend reading the [GitHub Open Source Guide](https://opensource.guide/) to learn how to fork a repository, create a branch, and submit a pull request.
+
+### Review Process
+
+Once you've submitted your contribution, one of the Drift Protocol developers will review your changes, provide feedback, and merge the pull request when it's ready.
+
+Please let us know if you have any questions or need further assistance in your PR's comments.
+
+Thank you for contributing to the Drift Protocol docs and being a part of our community!
+
+## Writing MDX
+
+The docs are written in MDX, a markdown format that supports JSX syntax. This allows us to embed React components in the docs. See the [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/) for a quick overview of markdown syntax.
+
 
 ## License
 

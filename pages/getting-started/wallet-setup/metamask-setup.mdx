@@ -1,24 +1,28 @@
-## Metamask Setup
+import { Callout, Card, Cards, Steps } from 'nextra/components'
+
+## Connect with MetaMask
 
 With CONNECT by Drift, MetaMask can be used to trade and sign transactions on Drift. CONNECT by Drift is an open source wallet extension that is powered by [**MetaMask Snaps**](https://metamask.io/snaps/), an innovation that extends the functionality of the MetaMask platform to other chains.
 
-> Note: MetaMask Snaps is in open beta and is available for you to use at your own risk. If you're experiencing any issues, you can reach out to our team via [discord](https://discord.gg/YaK2a5ge).
+<Callout> 
+Note: MetaMask Snaps is in open beta and is available for you to use at your own risk. If you're experiencing any issues, you can reach out to our team via [**Discord**](https://discord.gg/YaK2a5ge).
+</Callout>
 
-## Getting Started
-
-### 1. Connect your MetaMask wallet
+<Steps>
+### Connect your MetaMask wallet
 
 Click connect in the top right corner to get started. If you have MetaMask already installed, CONNECT will automatically detect this. Select MetaMask to continue.
 
 ![](public/assets/zVsh4Q-JhPX9uxgy3zfOf_image.png)
 
-### 2. Install MetaMask Snaps
+
+### Install MetaMask Snaps
 
 If this is your first time interacting with MetaMasks Snaps, you'll be prompted within MetaMask to install it.
 
 ![](public/assets/kSPfJGiHmwpt0f5d0c_GX_cleanshot-2023-09-05-at-143123.png)
 
-### 3. Connect to Drift
+### Connect to Drift
 
 Next, you'll be prompted to connect to Drift via MetaMask Snaps.
 
@@ -26,17 +30,17 @@ Once you connect, a new Solana compatible wallet will be automatically created f
 
 ![](public/assets/EhZkDFLwYTlNCW5hLbMar_image.png)
 
-### 4. Fund your wallet
+### Fund your wallet
 
 To start trading on Drift, your new MetaMask wallet will need some SOL for transaction fees and you'll need to deposit collateral to Drift. The onboarding flow will guide you from one step to the next.
 
-You can use [Mayan Cross Chain Swaps](https://mayan.finance/) to bridge assets over from your EVM wallet to your Solana wallet, including gas drop off, all in one step!
+You can use [**Mayan Cross Chain Swaps**](https://mayan.finance/) to bridge assets over from your EVM wallet to your Solana wallet, including gas drop off, all in one step!
 
 ![Onboarding: Fund your wallet](public/assets/ql39QrhU2kgdZa7Hs9xiB_image.png)
 
 If you'd like to fund your new MetaMask wallet from another Solana wallet, select "Fund from another wallet" for a step-by-step guide.
 
-### 5. Deposit Collateral to Drift
+### Deposit Collateral to Drift
 
 Once funds have been added to the wallet, you're now ready to deposit collateral to Drift for trading.
 
@@ -44,7 +48,7 @@ If you've exited the onboarding flow, you can click on `Bridge` to use Mayan Swa
 
 ![Deposit button on the top navigation](public/assets/AEdM8EMizcQFF6yHQMXxY_image.png)
 
-### 6. Managing funds in your MetaMask Solana Wallet
+### Managing funds in your MetaMask Solana Wallet
 
 MetaMask Snaps is currently in Open Beta and does not yet support viewing funds/balances from within MetaMask itself. You can view your MetaMask Solana Wallet balances within Drift by accessing the account dropdown and selecting `Manage Metamask Wallet`.
 
@@ -54,10 +58,9 @@ MetaMask Snaps is currently in Open Beta and does not yet support viewing funds/
 
 ![MetaMask Solana Wallet balances](public/assets/ex6Z7tZFZHHGjpI7StycV_image.png)
 
+</Steps>
 
-##
-
-## CONNECT by Drift FAQs
+## FAQs
 
 ### **What is CONNECT by Drift?**
 
@@ -86,3 +89,20 @@ Sometimes wallet adapter software can be out-of-date. Visit the discord of the d
 ### **Can I use Connect for my own dApp?**
 
 Yes! You can add CONNECT by Drift to your dApps' wallet adapter by installing the [**npm package**](https://www.npmjs.com/package/@drift-labs/snap-solana). CONNECT by Drift is also open source, you can view the code here if you'd like to develop you're own MetaMask Solana Snap.
+
+Next, check out these pages to learn about trading perpetuals, providing liquidity or lending to insurance fund: 
+
+<Cards>
+  <Card
+    title="What are perpetual futures?"
+    href="/trading/what-are-perpetual-futures"
+  />
+  <Card
+    title="Liquidity Providers"
+    href="/providing-liquidity/liquidity-providers"
+  />
+  <Card
+    title="Introduction to Insurance Fund"
+    href="/insurance-fund/insurance-fund-intro"
+  />
+</Cards>
