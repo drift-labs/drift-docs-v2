@@ -1,5 +1,3 @@
-import { Callout } from 'nextra/components'
-
 # Liquidity Providers
 
 ## Overview
@@ -14,7 +12,7 @@ Users are also able to LP with leverage.
 
 ### Adding/Removing Liquidity
 
-When an LP adds liquidity to the vAMM, they increase the amount of liquidity on the AMM curve by increasing **k** in the constant product curve.
+When an LP adds liquidity to the vAMM, they increase the amount of liquidity on the AMM curve by increasing **k **in the constant product curve.
 
 Specifically, `sqrt_k` is incremented by the number of `lp_shares` the LP takes on ([**code**](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/lib.rs#L926-L933)) and so the proportion of liquidity provided to the vAMM is the ratio: `lp_shares / sqrt_k`.
 
@@ -52,9 +50,9 @@ LPs only earn funding on settled positions, to defend against malicious LPs and 
 
 ### Design Consideration / Constraints
 
-At a high level, we track how much `base/quote_asset_amount` to give each lp by tracking a "`last_..._per_lp`" variable for both the base and quote amount when they first add liquidity (ie, `last_base_asset_amount_per_lp` and `last_quote_asset_amount_per_lp` respectively). For each trade that occurs on the protocol, the program updates these variables so the LPs get a slice of the opposite side of the trade (ie, if a trader opens a long then the `base_asset_amount_per_lp` variable would be decremented to track that the lp opens a short) ([**code**](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/controller/position.rs#L433-L448)). To determine how much base/quote to give LPs when they burn their shares, the program takes the difference between the current per_lp values and the last per_lp values and multiply it by the number of shares they have ([**code**](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/math/lp.rs#L62-L73)).
+At a high level, we track how much base/quote\_asset\_amount to give each lp by tracking a "last\_...\_per\_lp" variable for both the base and quote amount when they first add liquidity (ie, *last*\_base\_asset\_amount\_per\_lp and *last*\_quote\_asset\_amount\_per\_lp respectively). For each trade that occurs on the protocol, the program updates these variables so the LPs get a slice of the opposite side of the trade (ie, if a trader opens a long then the base\_asset\_amount\_per\_lp variable would be decremented to track that the lp opens a short) ([code](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/controller/position.rs#L433-L448)). To determine how much base/quote to give LPs when they burn their shares, the program takes the difference between the current per\_lp values and the last per\_lp values and multiply it by the number of shares they have ([code](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/math/lp.rs#L62-L73)).
 
-Following a similar pattern with the funding payments (eg, using a `last_funding_payments_per_lp` variable which is updated each time funding payments are distributed) would not work because the per_lp metrics can only tell you how much base asset amount the LPs have in total and not how much each LP has taken on individually. Following this pattern would enable an attack where a malicious LP adds a large amount of liquidity before the funding rate is updated and removes it right after the funding is updated, earning all of the funding payment without holding any base asset amount. The solution to this problem is to give unsettled positions to LPs which don't earn funding until they call the [**`settle_lp function`**](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/lib.rs#L780) and then calculate funding payments on these settled market positions like normal.
+Following a similar pattern with the funding payments (eg, using a last\_funding\_payments\_per\_lp variable which is updated each time funding payments are distributed) would not work because the per\_lp metrics can only tell you how much base asset amount the LPs have in total and not how much each LP has taken on individually. Following this pattern would enable an attack where a malicious LP adds a large amount of liquidity before the funding rate is updated and removes it right after the funding is updated, earning all of the funding payment without holding any base asset amount. The solution to this problem is to give unsettled positions to LPs which don't earn funding until they call the [settle\_lp function](https://github.com/drift-labs/protocol-v2/blob/190b042a4eeec8521aa6e9b54c094fbdea6a28d9/programs/clearing_house/src/lib.rs#L780) and then calculate funding payments on these settled market positions like normal.
 
 ### Protections
 
@@ -62,7 +60,7 @@ The vAMM has many protections against toxic flow which are implicitly applied to
 
 Guards against botting activity aimed at taking advantage of auction order flow are also in place. These guards can be fine-tuned over time.
 
-<Callout>
-A brief cooldown period to burn LP shares (30 seconds since the last liquidity addition) is in place to prevent the potential atomic MEV capture of flow from the protocol/non-bot LPs.
-</Callout>
+
+> A brief cooldown period to burn LP shares (30 seconds since the last liquidity addition) is in place to prevent the potential atomic MEV capture of flow from the protocol/non-bot LPs.
+
 
