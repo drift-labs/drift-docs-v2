@@ -1,5 +1,3 @@
-import { Callout } from 'nextra/components'
-
 # Liquidators
 
 Liquidations act as position transfers between accounts. Liquidator accounts thus need to be collateralised in order to satisfy the transfer's initial margin requirements.
@@ -21,8 +19,6 @@ Liquidations will be triggered and positions will be liquidated based on oracle 
 
 The user's trade price at liquidation for a perpetual position will be based on the oracle price + the penalty / fee that is set per market.
 
-<Callout type="error" emoji="️🚫">
-In the case of an extreme [**oracle error**](/trading/oracles): the market will pause most fills, liquidations, and funding rate updates.
-</Callout>
+**In the case of an oracle error (): the market will pause most fills, liquidations, and funding rate updates.**
 
 If you would like to run a liquidator bot, see [**Tutorial: Liquidation Bot**](/developer-resources/tutorial-bots/keeper-bots/tutorial-liquidation-bot)

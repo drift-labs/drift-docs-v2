@@ -49,7 +49,7 @@ The following instructions interact w/ the insurance fund:
 
 ## Perpetual Markets
 
-Perpetual Markets are bootstrapped by the [**Drift AMM**](/about-v2/drift-amm) which depending on market-making performance conditions can add and remove funds from the revenue pool.
+Perpetual Markets are bootstrapped by the [Drift AMM](<../About Drift v2/1 Drift AMM.md>) which depending on market-making performance conditions can add and remove funds from the revenue pool.
 
 Within the program, its parameterized by the following **in bold**:
 
@@ -69,7 +69,7 @@ Additionally, for direct draws from the insurance fund, it parameterized by the 
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `quote_settled_insurance`       | settled funds from the insurance fund since inception                                                                                                               |
 | `quote_max_insurance`           | max funds it can settle from insurance fund since inception                                                                                                             |
-| `unrealized_max_imbalance` | max amount of pnl the net users can be owed within a market before: 1\. draws from insurance are allowed 2\. initial asset weights for this pnl gets discounted |
+| `unrealized_max_imbalance`** ** | max amount of pnl the net users can be owed within a market before:1\. draws from insurance are allowed2\. initial asset weights for this pnl gets discounted |
 
 Unlike spot markets, perp markets are capped by the max draw from insurance via `quote_max_insurance`
 
@@ -81,7 +81,7 @@ The following instructions interact w/ the insurance fund:
 
 *   `resolve_perp_bankruptcy`
 
-Notes:  
+notes:  
 
 `resolve_perp_pnl_deficit` can only be resolved by insurance fund deposits (within the market's constraints), not by social loss with other users
 
