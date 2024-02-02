@@ -17,7 +17,6 @@ const logo = (
 const config: DocsThemeConfig = {
   logo: <span><b> Drift Protocol v2</b></span>,
   primaryHue: 195,
-  primarySaturation: 100,
 
   banner: {
     key: 'docs-open-source',
