@@ -16,6 +16,7 @@ const logo = (
 
 const config: DocsThemeConfig = {
   logo: <span><b> Drift Protocol v2</b></span>,
+  primaryHue: 206,
     sidebar: {
     titleComponent({ title, type }) {
       if (type === 'separator') {
@@ -43,7 +44,6 @@ const config: DocsThemeConfig = {
   },
   head: function useHead() {
     const { title } = useConfig()
-    const { route } = useRouter()
     const socialCard = 'public/assets/drift-v2.png'
 
     return (
