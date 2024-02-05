@@ -5,6 +5,7 @@ const withNextra = require('nextra')({
     codeblocks: false,
   },
   defaultShowCopyCode: true,
+  latex: true,
 })
 
 module.exports = withNextra()
