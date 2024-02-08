@@ -6,11 +6,22 @@ Trading fees are calculated in the market's quote asset (USDC) and show up in Pe
 
 Drift Protocol has a tiered fee structure for all futures markets based on an on-chain calculation of 30-Day Volume\*.
 
-Some markets, like BTC-PERP and ETH-PERP, have reduced fees. For October and November, these are 25% of the current schedule below.
+---
+
+BTC-PERP and ETH-PERP, have a reduced fee schedule (vs other markets)
+| **Tier** | **USDCInsurance Fund Staked Amount** | **Volume (30D)** | **Maker Fee** | **Taker Fee** | **Referree Taker Discount** | **Referrer Reward** | **Filler Reward**  |
+| -------- | ----------------------------------------- | ---------------- | ------------- | ------------- | --------------------------- | ------------------- | ------------------ |
+| 1        | < 500                                     | < 1m             | -0.5 bps        | 2.5 bps        | 5%                          | 15%                 | 10%\*              |
+| 2        | < 500                                     | > 1m             | -0.5 bps        | 2.25 bps         | 5%                          | 15%                 | 10%\*              |
+| 3        | > 1K                                      | > 5m             | -0.5 bps        | 2 bps         | 5%                          | 15%                 | 10%\*              |
+| 4        | > 2K                                      | > 10m            | -0.5 bps        | 1.75 bps         | 5%                          | 15%                 | 10%\*              |
+| 5        | > 5K                                      | > 50m            | -0.5 bps        | 1.5 bps         | 5%                          | 15%                 | 10%\*              |
+| VIP      | > 10K                                     | > 100m           | -0.5 bps        | 0.75 bps         | 5%                          | 15%                 | 10%\*              |
+
 
 ---
 
-Perpetual Trading Fees are charged on a per-tier basis according to the following schedule:
+All other Perpetual Trading Fees are charged on a per-tier basis according to the following schedule:
 
 | **Tier** | **USDCInsurance Fund Staked Amount** | **Volume (30D)** | **Maker Fee** | **Taker Fee** | **Referree Taker Discount** | **Referrer Reward** | **Filler Reward**  |
 | -------- | ----------------------------------------- | ---------------- | ------------- | ------------- | --------------------------- | ------------------- | ------------------ |
