@@ -24,7 +24,7 @@ const config: DocsThemeConfig = {
       }
       return <>{title}</>
     },
-    defaultMenuCollapseLevel: 1,
+    defaultMenuCollapseLevel: 2,
     toggleButton: true
   },
   project: {
@@ -72,8 +72,20 @@ const config: DocsThemeConfig = {
     )
   },
   footer: {
-    text: 'Drift Protocol v2 Documentation',
-  },
+    text: (
+      <div>
+        <a 
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Drift Protocol Landing Page"
+        href="https://www.drift.trade/">
+        <p>
+         © {new Date().getFullYear()} Drift Protocol
+        </p>
+        </a>
+      </div>
+    )
+  }
 }
 
 export default config
