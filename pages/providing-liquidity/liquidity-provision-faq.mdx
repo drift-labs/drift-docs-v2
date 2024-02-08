@@ -1,5 +1,15 @@
 # Liquidity Provision FAQ
 
+## How is max leverage used for LP?
+
+Once a user sets a custom_margin_ratio (or max leverage), this is used as lower bound determining if LP risk limits have breached.
+
+
+## What is LP auto-risk manager?
+
+Upon next pnl settle of an LP market, if the user's initial margin ratio has been breached in the account, the total margin/risk will be checked vs their initial margin ratio (or custom margin ratio if this is set lower). LP accounts will open orders to partially reducing their positions and burning a fraction of their LP in order to fall back into good initial margin health.
+
+
 ## Is there any cost associated with being an LP?
 
 There is no protocol-level fee to add or remove LP shares, aside from a rounding fee when liquidity is removed (burning LP shares).
