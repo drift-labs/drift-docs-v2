@@ -1,3 +1,5 @@
+import { Callout } from "nextra-theme-docs";
+
 # Drift Liquidity Provider (DLP) 
 
 ## Overview
@@ -10,8 +12,38 @@ Since the liquidity added to a perpetuals market is cross margined within Drift,
 
 For an in-depth overview of how DLP works, please see [**Liquidity Providers (LPs)**](/providing-liquidity/liquidity-providers).
 
-### How to add liquidity
+<Callout type="warning" emoji="⚠️">
+DLP involves leverage and opens perpetual positions on behalf of the user.
 
+This requires the user to actively manage their account's inventory / risk for best results.
+
+Before using DLP, even with low leverage, please read through all the documentation careful.
+
+</Callout>
+
+### Getting Started with DLP
+
+You’ll take on a share of the vAMM’s positions as a counterparty to other Drift traders. For example, if a Drift trader goes short, you’ll receive a long position.
+
+Your liquidity is represented as open orders (bids/asks) and you’ll see your DLP positions in the positions table:
+
+![](public/assets/DLP-intro-1.png)
+
+### Position Updates & Management
+
+As new trades are filled, your DLP positions are updated.
+
+You can manage your risk manually by reducing the DLP position or closing it via the close button in the positions table.
+
+![](public/assets/DLP-intro-2.png)
+
+### Setting max leverage for your subaccount
+
+A subaccount max leverage is suggested when you add liquidity but can be adjusted in the settings. This setting adjusts your margin requirement for increasing DLP positions. If your account falls below the collateral requirement shown on DLP page, the next P&L settle will trigger de-risking of the position. You can also opt out of this in Margin/Leverage Settings.
+
+![](public/assets/DLP-intro-3.png)
+
+### How to add liquidity to DLP
 To add liquidity to a perpetual market:
 
 1.  Select the market you'd like to be an LP for and click `Add`
