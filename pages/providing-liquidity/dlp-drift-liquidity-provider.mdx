@@ -1,16 +1,14 @@
 import { Callout } from "nextra-theme-docs";
 
-# Drift Liquidity Provider (DLP) 
+# Drift Liquidity Provider (DLP)
 
 ## Overview
 
-Users that elect to use DLP and provide liquidity will be able to select which market they'd like to provide liquidity to. By doing so, the user becomes an LP.
+DLP is a way for users can opt provide backstop liquidity to selected markets. This action increases liquidity in the market's virtual Automated Market Maker (vAMM), enhancing execution quality for other users by reducing price impact.
 
-Providing liquidity increases the total pool of liquidity available within that market by increasing `K`. In turn, this lowers slippage and reduces price impact resulting in an overall better trading experience for other users.
+Adding shares to the Liquidity provision involves boosting `sqrtK` for the vAMM's oracle-based constant product liquidity. Increasing `sqrtK` thereby increasing the liquidity pool. Notably, liquidity added to perpetuals markets is cross-margined within Drift, allowing users to earn lending interest and access capital for margin trading.
 
-Since the liquidity added to a perpetuals market is cross margined within Drift, you'll continue to earn lending interest and have capital available for margin trading.
-
-For an in-depth overview of how DLP works, please see [**Liquidity Providers (LPs)**](/providing-liquidity/liquidity-providers).
+For a detailed understanding of DLP functionality, refer to the [**DLP Technical Explainer**](/providing-liquidity/liquidity-providers).
 
 <Callout type="warning" emoji="⚠️">
 DLP involves leverage and opens perpetual positions on behalf of the user.
@@ -31,9 +29,17 @@ Your liquidity is represented as open orders (bids/asks) and you’ll see your D
 
 ### Position Updates & Management
 
-As new trades are filled, your DLP positions are updated.
+Adding lp shares, As new trades are filled, your perp position in that market can be updated.
 
-You can manage your risk manually by reducing the DLP position or closing it via the close button in the positions table.
+Reducing lp shares reduces the flow of updates to that market's perp position.
+
+The exact flow of position depends on the fill action vs the vAMM (this can be a proto-rata split of protocol-owned and user-owned liquidity or just one or the other). Note that DLP does not get a share of vAMM/JIT split fills.
+
+The vAMM can fill as a backstop and participate along side other user maker orders to partially rebalance inventory.
+
+[Learn more about how the vAMM fills order](/about-v2/drift-amm)
+
+You can manage your risk manually by reducing the perp position or closing it via the close button in the positions table.
 
 ![](public/assets/DLP-intro-2.png)
 
@@ -44,6 +50,7 @@ A subaccount max leverage is suggested when you add liquidity but can be adjuste
 ![](public/assets/DLP-intro-3.png)
 
 ### How to add liquidity to DLP
+
 To add liquidity to a perpetual market:
 
 1.  Select the market you'd like to be an LP for and click `Add`
