@@ -1,20 +1,40 @@
 {
   "index": "👾 Welcome to Drift Protocol",
+  "points": "✨ Drift Points Program",
   "about-v2": "🏎 About Drift v2",
-  "getting-started": "🏁 Getting Started",
-  "lend-borrow": "🏦 Lend & Borrow",
-  "trading": "📈 Trading",
-  "profit-loss":"💸 Profit & Loss (P&L)",
-  "liquidations": "💀 Liquidations",
-  "market-makers": "🏪 Market Makers",
-  "providing-liquidity": "💧 Providing Liquidity",
-  "insurance-fund": "🏛 Insurance Fund",
-  "risk-and-safety": "📝 Risk and Safety",
-  "developer-resources": "🖥 Developer Resources",
-  "referral-link": "💌 Referral Link",
-  "security": "🛡 Security",
-  "drift-draw": "🎟️ Drift Draw",
-  "legal-and-regulations": "📜 Legal and Regulations",
+  "--- Trade": {
+    "title": "📈 Trade",
+    "type": "separator"
+  },
+  "getting-started": "Getting Started",
+  "trading": "Trading",
+  "profit-loss":"Profit & Loss (P&L)",
+  "liquidations": "Liquidations",
+  "risk-and-safety": "Risk and Safety",
+  "referral-link": "Referral Link",
+  "--- Earn": {
+    "title": "💸 Earn",
+    "type": "separator"
+  },
+  "lend-borrow": "Lend & Borrow",
+  "market-makers": "Market Makers",
+  "providing-liquidity": "Providing Liquidity",
+  "insurance-fund": "Insurance Fund",
+  "--- Build": {
+    "title": "🤖 Build",
+    "type": "separator"
+  },
+  "sdk-documentation": "SDK Documentation",
+  "tutorial-bots": "Tutorial Bots",
+  "historical-data-v1": "Historical Data v1",
+  "historical-data-glossary": "Historical Data Glossary",
+  "API": "API",
+  "---": {
+    "type": "separator"
+  },
+  "legal-and-regulations": "Legal and Regulations",
+  "security": "Security",
+  "drift-draw": "Drift Draw",
   "glossary": "Glossary",
   "contributing-to-drift": {
     "title": "Contributing to Drift Protocol",
