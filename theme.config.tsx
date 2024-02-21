@@ -24,7 +24,7 @@ const config: DocsThemeConfig = {
       }
       return <>{title}</>
     },
-    defaultMenuCollapseLevel: 2,
+    defaultMenuCollapseLevel: 1,
     toggleButton: true
   },
   project: {
@@ -69,6 +69,14 @@ const config: DocsThemeConfig = {
           content={title ? title + ' – Drift Protocol' : 'Drift Protocol'}
         />
       </>
+    )
+  },
+  banner: {
+    key: 'points-program',
+    text: (
+      <a href="https://www.drift.trade/updates/update-drift-trader-points" target="_self">
+      ✨ Drift Points Program is live! Learn more → 
+      </a>
     )
   },
   footer: {
