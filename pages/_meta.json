@@ -8,7 +8,7 @@
   },
   "getting-started": "Getting Started",
   "trading": "Trading",
-  "profit-loss":"Profit & Loss (P&L)",
+  "profit-loss": "Profit & Loss (P&L)",
   "liquidations": "Liquidations",
   "risk-and-safety": "Risk and Safety",
   "referral-link": "Referral Link",
@@ -18,7 +18,7 @@
   },
   "lend-borrow": "Lend & Borrow",
   "market-makers": "Market Makers",
-  "providing-liquidity": "Providing Liquidity",
+  "backstop-amm-liquidity": "Backstop AMM Liquidity",
   "insurance-fund": "Insurance Fund",
   "--- Build": {
     "title": "🤖 Build",

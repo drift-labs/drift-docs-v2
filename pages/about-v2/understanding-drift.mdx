@@ -8,7 +8,7 @@ At the application level, Drift Protocol is a decentralized exchange that suppor
 
 3.  Borrow & Lend - [What is Borrow & Lend?](/lend-borrow/what-is-lend-borrow)
 
-4.  Passive Liquidity Provision - [Backstop AMM Liquidity (BAL)](/providing-liquidity/dlp-drift-liquidity-provider)
+4.  Passive Liquidity Provision - [Backstop AMM Liquidity (BAL)](/backstop-amm-liquidity/bal-provider-overview)
 
 ## The Problem
 
@@ -18,11 +18,11 @@ Porting over existing off-chain centralised exchange infrastructure onto the blo
 
 As a result, most on-chain orderbooks suffer from:
 
--   slow fills;
+- slow fills;
 
--   high spreads; and
+- high spreads; and
 
--   low liquidity.
+- low liquidity.
 
 ## Our Solution
 
@@ -44,17 +44,16 @@ Auctions are run via a Dutch Auction (where the auction price starts at the bett
 
 _For a more technical breakdown, check out:_[ Just-in-Time(JIT) Auctions](/about-v2/jit-auctions)
 
-
 ### Constant Liquidity
 
-Drift's virtual AMM (AMM) is the backstop designated liquidity provider for trades on the exchange if: 
+Drift's virtual AMM (AMM) is the backstop designated liquidity provider for trades on the exchange if:
 
-1) market orders aren't filled by the JIT and 
-2) resting orders hit a trigger price that can be filled by the AMM.
+1. market orders aren't filled by the JIT and
+2. resting orders hit a trigger price that can be filled by the AMM.
 
 The AMM provides a source of constant liquidity for all traders to **take** from. The AMM is considered constant as liquidity is available based on a constant product formula `(x\*y=k){:jsx}` balancing the reserves. Drift's AMM features an inbuilt bid-ask spread that adjusts based on inventory held by the AMM. Users can also LP into the AMM to further collateralize.
 
-This also means that, even without external makers, Drift Protocol can support new markets without dependence on external market makers to bootstrap liquidity (albeit with additional risks on the immediate availability of unsettled PnL). 
+This also means that, even without external makers, Drift Protocol can support new markets without dependence on external market makers to bootstrap liquidity (albeit with additional risks on the immediate availability of unsettled PnL).
 
 Many prudent measures in the protocol's design are in place (capped exposure, effective market making, revenue pool utilization, insurance fund rules, etc) to mitigate and isolate the risks of a single market. The AMM needs a reliable oracle of the perpetual market's spot reference asset. For instance, Drift's SOL-PERP market would refer to a SOL/USD spot oracle for a spot reference. Drift currently uses [Pyth](https://pyth.network/) for its oracles and can arbitrarily support other sources per market.
 
@@ -76,27 +75,26 @@ The decentralised orderbook acts as a source of 'resting' liquidity as it rests 
 
 _For a more technical breakdown, check out:_[ Decentralised Orderbook FAQ](/about-v2/decentralized-orderbook).
 
-
 ## Our core value
 
 ### Decentralisation
 
 Drift Protocol is a **decentralised** exchange, meaning:
 
--   all deposits, withdraws, and trades are executed on-chain and are completely transparent;
--   trading requires a connection to a self-custodial Solana wallet; and
--   execution of all trades is facilitated by smart contract technology with no human or third-party input to execute or fill trades.
+- all deposits, withdraws, and trades are executed on-chain and are completely transparent;
+- trading requires a connection to a self-custodial Solana wallet; and
+- execution of all trades is facilitated by smart contract technology with no human or third-party input to execute or fill trades.
 
 Decentralisation offers many benefits, including:
 
--   anonymity;
--   transparency;
--   fairness; and
--   trustlessness.
+- anonymity;
+- transparency;
+- fairness; and
+- trustlessness.
 
 However, decentralisation also means that Drift is susceptible to the same limitations and shortcomings that arise from running on a blockchain, including:
 
--   underlying blockchain risk;
--   transaction fees;
--   smart contract risk; and
--   network congestion.
+- underlying blockchain risk;
+- transaction fees;
+- smart contract risk; and
+- network congestion.
