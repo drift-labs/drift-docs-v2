@@ -1,142 +1,140 @@
 # JIT Maker Bot
 
+This tutorial shows how to run a JIT Maker bot in Typescript. A similar example is available at https://github.com/drift-labs/keepyrs
+
 Market orders go through the [**Just-In-Time (JIT) Auctions**](/about-v2/jit-auctions) where Makers fight to fill orders before the order is allowed to fill against the [**Drift AMM**](/about-v2/drift-amm).
 
-JIT Maker Bots maintain a local copy of the decentralised orderbook (DLOB) (see: [**Keepers & Decentralised Orderbook**](/about-v2/keepers-decentralized-orderbook-faq)) in order to see which orders are in the auction phase and can be bid on.
 
-# Getting Started
+## Running the bot
 
 **☠️ This bot requires collateral to run. This tutorial is a developer's guide and holds no responsibility over bot outcomes.**
 
-The reference implementation of the JIT Maker Bot is available [**here**](https://github.com/drift-labs/keeper-bots-v2/blob/master/src/bots/jitMaker.ts).
+### 1. Clone the repository
 
-Follow the instructions at [**Keeper Bots**](/tutorial-bots/keeper-bots) to set the required environment variables, initialise the`ClearingHouseUser` and deposit some collateral.
+The JIT Maker example lives in the keeper-bots-v2 repo, clone it to your local machine:
 
-Start the JIT Maker Bot:
-
-```shell
-yarn run dev:jitmaker
+```
+git clone git@github.com:drift-labs/keeper-bots-v2.git
 ```
 
-# Technical Explanation
 
-## Streaming User Orders
+### 2. Prepare a keypair and drift account.
 
-The Typescript SDK exposes an EventSubscriber object that you can use to receive market orders on-chain.
+Refer to the [bot wallet setup](../../getting-started/wallet-setup/bot-wallet-setup.mdx) tutorial for how to set up a bot wallet.
 
-```typescript
-import { EventSubscriber, OrderRecord } from "@drift-labs/sdk";
 
-// clearingHouse init omitted for brevity
+### 3. Prepare the config file.
 
-const pollEventsConfig = {
-    type: "polling",
-    frequency: 1000,
-};
-const websocketEventsConfig = {
-    type: "websocket",
-};
+The [`jit-maker-config.yaml`](https://github.com/drift-labs/keeper-bots-v2/blob/master/jit-maker-config.yaml) file is good starting point. You will need to fill in the following values:
 
-const eventSubscriber = new EventSubscriber(connection, clearingHouse.program, {
-    maxTx: 8192,
-    maxEventsPerType: 8192,
-    orderBy: "blockchain",
-    orderDir: "desc",
-    commitment: "confirmed",
-    logProviderConfig: pollEventsConfig,
-});
-eventSubscriber.subscribe();
+* `global.endpoint`: set this to your RPC endpoint (see [RPC Providers](./rpc-providers.mdx))
+* `global.keeperPrivateKey`: set this to your bot private key (alternatively you can leave it blank and set the `KEEPER_PRIVATE_KEY` environment variable)
+* `botConfigs.jitMaker.aggressivenessBps`: this is how aggressive you want your jit maker to be. If set to 30, the bot will attempt to buy 30 bps above the best bid, and sell 30 bps below the best ask.
+* `botConfigs.jitMaker.marketType` (`perp` or `spot`): this is the type of market we want to jit make
+* `botConfigs.jitMaker.marketIndexes`: this is the list of markets that we want to jit make, it
+* `botConfigs.jitMaker.subaccounts`: this is the subaccount to use for each marketIndex provided
 
-eventSubscriber.eventEmitter.on("newEvent", async (event) => {
-    if (event.eventType === "OrderRecord") {
-        const order = event as OrderRecord;
-        // 1) update dlob
-        // 2) get orders from DLOB still in auction
-        // 3) bid on auctions
-    }
-});
+
+Note: `subaccounts` and `marketIndexes` are a direct mapping, so the below config will use subaccount 0 for marketIndex 0, and subaccount 1 for marketIndex 1:
+
+```yaml
+botConfigs:
+  jitMaker:
+    marketType: perp
+    marketIndexes:
+      - 0
+      - 1
+    subaccounts:
+      - 0
+      - 1
 ```
 
-## Bidding on JIT Auctions
+### 4. Run the bot
 
-Technical details on the JIT Auction and its pricing can be found at [**Just-In-Time (JIT) Auctions**](/about-v2/jit-auctions). The reference implementation acts on each user order received and makes the order in the opposite direction at the auction end price with a random order size between `20` and `MAX_TRADE_SIZE_QUOTE`.
+Now you are ready to run the bot, start it with:
 
-```typescript
-// after finding a DLOB node still in the auction period
-const jitMakerDirection = isVariant(nodeToFill.node.order.direction, "long")
-    ? PositionDirection.SHORT
-    : PositionDirection.LONG;
-
-// the auction start price will always be valid, but is not necessarily the best price
-const jitMakerPrice = nodeToFill.node.order.auctionStartPrice;
-
-// fill the entire order
-const baseAmountToFill = nodeToFill.node.order.baseAssetAmount.sub(
-    nodeToFill.node.order.baseAssetAmountFilled
-);
-
-const txSig = await this.driftClient.placeAndMake(
-    {
-        orderType: OrderType.LIMIT,
-        marketIndex: nodeToFill.node.order.marketIndex,
-        baseAssetAmount: baseAmountToFill,
-        direction: jitMakerDirection,
-        price: jitMakerPrice,
-        postOnly: true,
-        immediateOrCancel: true,
-    },
-    {
-        taker: action.node.userAccount,
-        order: action.node.order,
-    }
-);
-console.log(`Bid on JIT auction: ${txSig}`);
+```
+yarn run dev --config-file=jit-maker-config.yaml
 ```
 
-## Determine how much longer the auction will last
 
-It may be helpful to determine how much time is left in the order's auction in order to get the current dutch auction price:
+## Technical Explanation
 
-```typescript
-// determine how much auction time is left
-const orderSlot = nodeToFill.node.order.slot.toNumber();
-const currSlot = slotSubscriber.getSlot();
-const aucDur = new BN(nodeToFill.node.order.auctionDuration);
-const aucEnd = orderSlot + aucDur;
+### Strategy overview
 
-console.log(
-    `it has been ${currSlot - orderSlot} slots since order, auction ends in ${
-        aucEnd - currSlot
-    } slots`
-);
+This bot uses the [`JitterShotgun`](https://github.com/drift-labs/jit-proxy/blob/master/ts/sdk/src/jitter/jitterShotgun.ts#L13) strategy and the [`jit-proxy`](https://github.com/drift-labs/jit-proxy) program to try to fill jit maker fills.
+
+The JitterShotgun strategy continuously sends transactions in an attempt to fill orders as soon as it sees one that crosses. The `jit-proxy` program is a permissionless and stateless program that does the last-mile checks on-chain to ensure the fill is within our desired bid/ask price and does not exeeed min/max positions.
+
+
+### JIT-able orders
+
+Orders with `auctionDuration > 0` may be filled by jit makers at any time. This bot finds these orders by using the `programSubscribe` RPC method, and filtering for users with new orders that meet this criteria.
+
+
+### Final notes and future optimizations
+
+This is a very simple and naiive strategy, some oppotunities for improvements:
+* allow multiple markets and spot + perp at the same time
+* asymetric bid/ask offsets, allow the different `aggressivenessBps` for bid/ask depending on how you want to skew your quotes
+* an improved `JitterShotgun` strategy that is more cognizant of time and transactions sent
+
+
+## Troubleshooting
+
+### Resubscribing log messages
+
+```
+No ws data from user in 30000ms, resubscribing
+No ws data from userStats in 30000ms, resubscribing
+No ws data from perpMarket in 30000ms, resubscribing
+No ws data from perpMarket in 30000ms, resubscribing
+No ws data from perpMarket in 30000ms, resubscribing
+No ws data from spotMarket in 30000ms, resubscribing
 ```
 
-## Tracking Open Positions and Orders
+This is a notification from the drift sdk that it is restarting its websocket connection with the RPC due to no messages being received within the set time. This is generatlly not an error and pretty common for less active markets that don't have much activity.
 
-The main `ClearingHouse` object from the SDK will update (polling or WebSocket) the user's account details behind the scenes. You can access the open orders and open positions of the user account by reading the `positions` and `orders` object of the `ClearingHouseUser`.
+### Running JIT periodic tasks...
 
-```typescript
-// you can force the sdk to fetch latest account data
-await this.driftClient.fetchAccounts();
-await this.driftClient.getUser().fetchAccounts();
-
-const user = this.driftClient.getUser();
-
-// check open positions
-for (const p of user.getUserAccount().positions) {
-    if (p.baseAssetAmount.isZero()) {
-        // no open position in this index
-        continue;
-    }
-
-    console.log(p);
-}
-
-// check open orders
-for (const o of user.getUserAccount().orders) {
-    if (isVariant(order.status, "init")) {
-        // no open order in this index
-        continue;
-    }
-}
 ```
+[2024-02-27T00:04:31.387Z] Running JIT periodic tasks...
+[2024-02-27T00:04:31.389Z] info: (mkt index: JTO-PERP) base to market make (targetLvg=0.95): 1481.8891930588115 = 3476.551044 / 2.228725 * 0.95
+```
+
+This is a normal status message that the bot is running its periodic tasks. If you see this message, it means the bot is running as expected.
+
+
+###  Order does not cross params yet, retrying
+
+```
+Trying to fill 24yfkkuFv849BpCBBo49tV6i6ycfc3aEUY6wWKFsN4SS-177961
+SendTransactionError: failed to send transaction: Transaction simulation failed: Error processing Instruction 2: custom program error: 0x1771
+  ...
+  logs: [
+    'Program ComputeBudget111111111111111111111111111111 invoke [1]',
+    'Program ComputeBudget111111111111111111111111111111 success',
+    'Program ComputeBudget111111111111111111111111111111 invoke [1]',
+    'Program ComputeBudget111111111111111111111111111111 success',
+    'Program J1TnP8zvVxbtF5KFp5xRmWuvG9McnhzmBd9XGfCyuxFP invoke [1]',
+    'Program log: Instruction: Jit',
+    'Program log: slot = 250667476 auction duration = 32 slots_left = 15',
+    'Program log: taker order type Oracle auction start -12100 auction end -200 limit price 0 oracle price offset -193',
+    'Program log: taker price 2220700 < worst ask 2234257',
+    'Program log: AnchorError occurred. Error Code: AskNotCrossed. Error Number: 6001. Error Message: AskNotCrossed.',
+    'Program J1TnP8zvVxbtF5KFp5xRmWuvG9McnhzmBd9XGfCyuxFP consumed 39672 of 599700 compute units',
+    'Program J1TnP8zvVxbtF5KFp5xRmWuvG9McnhzmBd9XGfCyuxFP failed: custom program error: 0x1771'
+  ]
+
+Failed to fill 24yfkkuFv849BpCBBo49tV6i6ycfc3aEUY6wWKFsN4SS-177961
+Order does not cross params yet, retrying
+```
+
+This is a failed tx message from the RPC provider when a transaction is sent. It is common for the shotgun strategy to get this message as it sends many transactions at once.
+
+Decoding it further:
+* It is a jit fill attempt on taker `24yfkkuFv849BpCBBo49tV6i6ycfc3aEUY6wWKFsN4SS`'s orderId:`177961`
+* the current slot (that the RPC is simulating the transaction in) is 250667476, the auction lasts for 32 slots, and there are 15 slots left
+* the taker's order is an Oracle order, with an offset of -12100 (-$0.0121) to -200 (-$0.0020)
+* the taker's order is a `buy` (since it is comparing with our `ask` price)
+* the taker's price at that slot is 2220700 ($2.2207), which is below our worst ask 2234257 ($2.2343), so the jit-proxy program threw and error to prevent us from sending a failing transaction on chain
