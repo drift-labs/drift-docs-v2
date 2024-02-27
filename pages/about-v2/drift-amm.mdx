@@ -3,7 +3,7 @@
 
 Drift uses a backstop AMM as a source of guaranteed constant liquidity for the exchange, providing constant liquidity to be taken against asynchronously.
 
-Drift's v1 featured a Dynamic AMM (DAMM) which was an iteration on top of Perpetual Protocol's innovation - the [**virtual AMM (vAMM)**](https://blog.perp.fi/a-deep-dive-into-our-virtual-amm-vamm-40345c522eeb), except with configurable parameters, namely:
+Drift's v1 featured a Dynamic AMM which was an iteration on top of Perpetual Protocol's innovation - the [virtual AMM (vAMM)](https://blog.perp.fi/a-deep-dive-into-our-virtual-amm-vamm-40345c522eeb), except with configurable parameters, namely:
 
 -   **Peg:** a price multiplier
 
@@ -19,11 +19,11 @@ Drift's v1 featured a Dynamic AMM (DAMM) which was an iteration on top of Perpet
 
     -   (Capped) funding payments
 
-You can read more about Drift's v1 DAMM design [**here**](https://www.notion.so/driftprotocol/Drift-dAMM-deep-dive-ff154003aedb4efa83d6e7f4440cd4ab#861bdbceda8a45a38600a0d9d762ee25).
+You can read more about Drift's v1 AMM design [here](https://www.notion.so/driftprotocol/Drift-AMM-deep-dive-ff154003aedb4efa83d6e7f4440cd4ab#861bdbceda8a45a38600a0d9d762ee25).
 
 ## Drift v2 AMM
 
-Drift’s v2 AMM is still a vAMM using a constant product curve but now includes external [**Liquidity Providers (LPs)**](/providing-liquidity/liquidity-providers) a concentration factor, and dynamic spread/peg that **programmatically update prior to filling trades.**
+Drift’s v2 AMM is still a AMM using a constant product curve but now includes external [Liquidity Providers (LPs)](/providing-liquidity/liquidity-providers) a concentration factor, and dynamic spread/peg that programmatically update prior to filling trades.
 
 The mechanics behind the dynamic spread and peg are:
 
@@ -66,9 +66,9 @@ This pricing mechanism updates an asset's mark price towards its oracle price, a
 
 The mark price is updated each time the oracle updates its price and when the contract is interacted with.
 
-**Oracle Live Pricing Sequence**
+Oracle Live Pricing Sequence
 
-Every time a trader wants to fill against the AMM, the AMM will be updated in the same slot with a valid oracle price (see [**Oracles**](/trading/oracles)). 
+Every time a trader wants to fill against the AMM, the AMM will be updated in the same slot with a valid oracle price (see [Oracles](/trading/oracles)). 
 
 The sequence is:
 

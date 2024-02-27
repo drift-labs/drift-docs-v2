@@ -1,5 +1,5 @@
 {
-    "dlp-drift-liquidity-provider": "Drift Liquidity Provider (DLP)",
-    "liquidity-provision-faq": "Liquidity Provider FAQ",
-    "liquidity-providers": "DLP Technical Explainer"
+    "dlp-drift-liquidity-provider": "Backstop AMM Liquidity (BAL)",
+    "liquidity-providers": "Backstop AMM Liquidity (BAL) Technical Explainer",
+    "liquidity-provision-faq": "Liquidity Provider FAQ"
 }

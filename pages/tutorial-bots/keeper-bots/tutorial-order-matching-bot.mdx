@@ -2,7 +2,7 @@
 
 # Introduction
 
-Order Matching Bots (Matching Bots) are responsible for matching two orders that cross or a taker order against the DAMM. Specifically, this includes:
+Order Matching Bots (Matching Bots) are responsible for matching two orders that cross or a taker order against the AMM. Specifically, this includes:
 
 -   **Market Orders**: Market Buy and Market Sell
 
@@ -10,9 +10,9 @@ Order Matching Bots (Matching Bots) are responsible for matching two orders that
 
 Matching Bots receive a small compensation for each order that they successfully fill.
 
-See [**Keepers & Decentralised Orderbook**](/about-v2/decentralized-orderbook) for a technical explanation of how the decentralised orderbook (DLOB) and matching incentives work.
+See [Keepers & Decentralised Orderbook](/about-v2/decentralized-orderbook) for a technical explanation of how the decentralised orderbook (DLOB) and matching incentives work.
 
-Matching Bots are similar to [**Tutorial: Order Trigger Bot**](/tutorial-bots/keeper-bots/tutorial-order-trigger-bot) in that they:
+Matching Bots are similar to [Tutorial: Order Trigger Bot](/tutorial-bots/keeper-bots/tutorial-order-trigger-bot) in that they:
 
 -   also maintain a local copy of the Decentralised Limit Orderbook (DLOB);
 
@@ -22,9 +22,9 @@ Matching Bots are similar to [**Tutorial: Order Trigger Bot**](/tutorial-bots/ke
 
 # Getting Started
 
-The reference implementation of the Order Matching Bot is available [**here**](https://github.com/drift-labs/keeper-bots-v2/blob/master/src/bots/filler.ts).
+The reference implementation of the Order Matching Bot is available [here](https://github.com/drift-labs/keeper-bots-v2/blob/master/src/bots/filler.ts).
 
-Follow the instructions at [**Keeper Bots**](/about-v2/keepers) to set the required environment variables and make sure a `ClearingHouseUser` is initialized.
+Follow the instructions at [Keeper Bots](/about-v2/keepers) to set the required environment variables and make sure a `ClearingHouseUser` is initialized.
 
 Start the Matching Bot:
 
@@ -36,7 +36,7 @@ yarn run dev:filler
 
 ## 1. Get nodes from the DLOB that are ready to be filled
 
-Market orders that are sent on the Drift Protocol first go through the [**Just-In-Time (JIT) Auctions**](/about-v2/jit-auctions). After the auction period, Matching Bots step in to fill orders for a small reward.
+Market orders that are sent on the Drift Protocol first go through the [Just-In-Time (JIT) Auctions](/about-v2/jit-auctions). After the auction period, Matching Bots step in to fill orders for a small reward.
 
 The DLOB implementation includes a method for getting orders ready to be filled:
 

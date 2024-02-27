@@ -16,6 +16,7 @@ Burning LP Shares (analogous to cancelling open orders), will automatically sett
 
 Given the LP may acquire a base amount that differs from the market's minimum step size (e.g. 0.1 SOL), the cost basis will be rounded on any residual remainder value below this size. This means **the minimum remove liquidity fee is zero while the maximum is the quote value (using oracle) of the minimum step size in the market**. This amount is determined by the remainder base asset amount in the LP position.
 
-### All my positions in DLP were closed, but I didn't take any action, and liquidity was removed from the DLP?
+### All my positions in BAL were closed, but I didn't take any action, and liquidity was removed from the BAL?
 
-We implemented a mechanism where if your DLP position exceeds your risk limits (leverage), your positions are automatically closed. You can disable this feature in the Settings.
+If you don't choose to disable automatic de-risking in margin/leverage settings, your positions or shares may be closed or removed if your account falls below the initial margin requirement. This measure is in place to avoid liquidations.
+

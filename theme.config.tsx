@@ -16,7 +16,7 @@ const logo = (
 
 const config: DocsThemeConfig = {
   logo: <span><b> Drift Protocol v2</b></span>,
-  primaryHue: 206,
+  primaryHue: 224,
     sidebar: {
     titleComponent({ title, type }) {
       if (type === 'separator') {

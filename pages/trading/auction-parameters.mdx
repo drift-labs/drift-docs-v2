@@ -2,7 +2,7 @@
 
 Drift Protocol allows orders to set custom auction parameters.
 
-These settings allow users to customize how their orders are executed on the Drift Protocol by setting specific auction parameters. You can see the implementation of these auction settings [**here**](https://github.com/drift-labs/drift-common/blob/master/common-ts/src/common-ui-utils/commonUiUtils.ts#L374).
+These settings allow users to customize how their orders are executed on the Drift Protocol by setting specific auction parameters. You can see the implementation of these auction settings [here](https://github.com/drift-labs/drift-common/blob/master/common-ts/src/common-ui-utils/commonUiUtils.ts#L374).
 
 > **Double Check:** One can always review their Auction Parameters for a particular order in the Confirmation Modal before submitting.
 (you can expand details with "Advanced" checked)
@@ -38,4 +38,4 @@ Additionally, user's can specify their auctions as offsets from oracle price. Th
 
 ### Auctions for Limit Orders
 
-When submitted limit orders crosses local DLOB and/or vAMM, a limit order without post only flag will actually submit an auction first. The limit order uses the user defined rule for start price for its start auction param. It effectively the same as a market auction order **except the user explicitly overrides the End Price and Slippage Tolerance Limit Price.**
+When submitted limit orders crosses local DLOB and/or AMM, a limit order without post only flag will actually submit an auction first. The limit order uses the user defined rule for start price for its start auction param. It effectively the same as a market auction order **except the user explicitly overrides the End Price and Slippage Tolerance Limit Price.**
