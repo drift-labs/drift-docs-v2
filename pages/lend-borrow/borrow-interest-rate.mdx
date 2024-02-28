@@ -1,8 +1,8 @@
 # Borrow Interest Rate
 
-Drift's lending pools work similarly to the lending pools of [**Aave**](https://app.aave.com/reserve-overview/?underlyingAsset=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48&marketName=proto_mainnet).
+Drift's lending pools work similarly to the lending pools of [Aave](https://app.aave.com/reserve-overview/?underlyingAsset=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48&marketName=proto_mainnet).
 
-Each market has an optimal borrow rate and max borrow rate and uses this piecewise function based on the Utilisation Rate (**U**).*
+Each market has an optimal borrow rate and max borrow rate and uses this piecewise function based on the Utilisation Rate (U).*
 
 The Utilisation Rate represents the availability of capital within the system.  
 
@@ -12,9 +12,9 @@ The Utilisation Rate represents the availability of capital within the system.
 
 #
 
-_Note: this model has been adapted from Aave's _[**_interest rate model_**](https://docs.aave.com/risk/liquidity-risk/borrow-interest-rate)_. The parameters and model will be iterated and improved as Drift's borrow lend engine grows. Last Updated: 21 October 2022_.
+_Note: this model has been adapted from Aave's _[_interest rate model_](https://docs.aave.com/risk/liquidity-risk/borrow-interest-rate)_. The parameters and model will be iterated and improved as Drift's borrow lend engine grows. Last Updated: 21 October 2022_.
 
-The interest rate is based on the [**borrow utilisation**](https://github.com/drift-labs/protocol-v2/blob/master/programs/drift/src/math/spot_balance.rs#L124).  
+The interest rate is based on the [borrow utilisation](https://github.com/drift-labs/protocol-v2/blob/master/programs/drift/src/math/spot_balance.rs#L124).  
 
 Liquidity risk materialises when utilisation is high and this becomes more problematic as **_U_** gets closer to 100%.  
 
