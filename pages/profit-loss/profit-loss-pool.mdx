@@ -10,7 +10,7 @@ It's important to recognise the difference between **settling P&L** and **realis
 
 ### Calling `settlePNL`
 
-Any account can call `settlePNL` instruction. Once called, all unrealised negative P&L will be settled and added to the market's P&L Pool to be made available for withdrawal.
+Any account can call `settlePNL` instruction. Once called, all unrealised P&L will be settled and added to (or subtracted from) the market's P&L Pool to be made available for withdrawal.
 
 Users with open positions that have negative unrealised P&L will have their unrealised P&L settled and sent to the P&L Pool; **however, their position will be unaffected**.
 
