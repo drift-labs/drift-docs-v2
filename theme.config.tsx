@@ -269,7 +269,7 @@ const logo = (
 );
 
 const config: DocsThemeConfig = {
-  primaryHue: 224,
+  primaryHue: 215,
   sidebar: {
     titleComponent({ title, type }) {
       if (type === "separator") {

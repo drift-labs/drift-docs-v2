@@ -1,0 +1,13 @@
+# Account Health Breakdown 
+
+The account health percentage indicates the overall health status of your main account. When it reaches zero, it signifies that the weighted value of your total collateral has fallen below the maintenance margin requirement, potentially leading to liquidation.
+
+Account health percentage is equal to: `1 - Maintenance Margin / Maintenance Collateral`
+
+At zero health, the maintenance weighted value of your total collateral has fallen below the maintenance margin requirement and the account can be liquidated.
+
+<img src="/assets/account-health.png" alt="health-modal" width="500" height="auto"></img>
+
+**Initial margin** represents the amount required to take risk-increasing actions. **Maintenance margin** represents the amount required to avoid liquidation.
+
+**Total collateral** is user's weighted value of assets. **Margin requirement** is user's weighted value of liabilities. **Free collateral** is user's weighted value of collateral minus weighted value of liabilities.
