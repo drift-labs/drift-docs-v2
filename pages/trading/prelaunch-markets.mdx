@@ -1,0 +1,15 @@
+# Prelaunch Market
+
+Prelaunch Markets are custom markets that allow users to trade before Oracle availability. Instead, they use a custom oracle source that uses the current mark twap (with window = the funding period) and a custom max price.
+
+To avoid and isolate risk between other markets, all Prelaunch Markets currently have:
+- an isolated contract tier
+- no external insurance
+- conservative max open interest caps
+
+W-PERP configuration:
+- oracle source = prelaunch
+- contract tier = isolated
+- 3x leverage, 6x maint leverage
+- -4/20 bps maker/taker fees
+- 5% liquidation fee (on notional)
