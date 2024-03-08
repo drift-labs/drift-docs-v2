@@ -8,12 +8,12 @@ Contract tiers are used to categorically label and rank the risk of perpetual ma
 - Speculative
 - Isolated
 
-These ranked tiers used for priority access to collateral in liquidations, max limits for insurance, and determining acceptable range of oracle price di and sanitization rules for twap / funding rate updates.
+These ranked tiers are used for priority access to collateral in liquidations, max limits for insurance, and determining acceptable range of oracle price di and sanitization rules for twap / funding rate updates.
 
 Speculative tier have no access to external insurance funds (only the perpetual market's fee pool)
 
-Isolated tier requires the user account disable cross margin trading (on both perpetual and spot markets). If the account has liabilities beyond the perpetual market's quote asset and the isolated perp market, it is forced to enter reduce only mode.
-
+Isolated tier requires the user account refrain / disable cross margin trading (on both perpetual and spot markets). If the account has liabilities beyond the perpetual market's quote asset and the isolated perp market, it is forced to enter reduce only mode.
+- Users with 'Margin Trading Enabled', a non-USDC (for pnl settlement) borrow, or another perpetual position will NOT be allowed to enter an Isolated 
 
 ## Oracle Source
 The oracle provider which provides a price, confidence band, and timeliness information for the market.
