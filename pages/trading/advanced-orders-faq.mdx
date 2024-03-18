@@ -35,6 +35,7 @@ The difference is in the way these orders are settled. Take Profit Market orders
 
 Both order types are set on the market when their triggers are met. Where the two orders differ is in their direction. Stop Losses are used for downside protection to close losing positions and Take Profits are used to close positions that are in profit.
 
+<Callout type="warning" emoji="⚠️">
 **Why my stop loss didn't trigger?**
 
 Limit orders can only get filled if the oracle prices cross. Therefore, just looking at the "fill" candles can be misleading. Use the "oracle" option on the candles to see the historical oracle prices.
@@ -44,6 +45,7 @@ Even if the oracle price crosses your stop, fills aren't guaranteed due to the d
 If the price only briefly meets your order, it's not guaranteed to be filled. We're working on improving the filler network, which may help. Additionally, you can run your own filler for your own orders if you're technically inclined and really want guaranteed fills, but even then, there's no guarantee. This is one of the trade-offs we've made to achieve a decentralized and scalable system.
 
 We're also experiencing periods where the oracle is stale, so orders can't be filled. This is further exacerbating the problem, but it's a necessary sacrifice for the security of the protocol. Hopefully, improvements to the Solana and Pyth Network will help fix this.
+</Callout>
 
 
 **Why did my take profit order not work?**
