@@ -1,79 +1,56 @@
-import { Callout } from "nextra-theme-docs";
-
 # Introduction to Profit & Loss
 
-This guide explains how to track your Profit and Loss (P&L or PnL) on Drift to understand the performance of your open positions in perpetual markets.
 
-### What is P&L?
+Profit and Loss, often referred to as P&L or PnL, is a term used to describe the current state of a user's active positions while trading. By observing P&L users will be able to determine whether their positions are either in profit or loss.
 
-P&L reflects the potential profit or loss on your open positions. It's a dynamic value that changes based on the current market price of the underlying asset compared to your average entry price. In simpler terms, it indicates whether your positions are currently trending towards profit or loss.
+A user's current position on Drift is the cumulative sum of all their filled orders (increasing, reducing, or closing) over time. All trading lots, per market and per subaccount, are combined into a single position to determine P&L.  
 
-![](/assets/pnl-positions.png)
+The position table below shows the **P&L** for the current position. Users can toggle `$` or `%` to change whether they would like to see **P&L** in dollar terms ($) or in percentage terms (%).
 
-Drift calculates P&L by summing all filled orders (adding, reducing, or closing) across markets and subaccounts. The P&L in the table above is calculated as the difference between the position's `Entry Price` with the current oracle price multiplied by the `Size` (view can be switched between $ and %).
+![Positions ](public/assets/91KHvPhXhT6hSgWrqKuJP_image.png)
 
-<Callout type="warning" emoji="⚠️">
-  P&L in the *Positions* tab is **unrealised P&L** (uP&L) and as such doesn't
-  represent actual withdrawable amount (claimed and settled P&L). Read the
-  [Types of P&L](/profit-loss/profit-loss-intro#types-of-pl) for more details.
-</Callout>
+In the above image, the P&L refers to the **unrealised P&L** or **uPNL** of the open positions (SOL-PERP and ETH-PERP shorts). To realise this P&L, users will have to close their positions.  
 
-### Types of P&L
+The PnL in the table above is calculated as the difference between the position's `Entry Price` with the current oracle price multiplied by the `Size`.
 
-- `Unrealised P&L (uP&L)`: Potential profit or loss on open positions based on current market price vs. your entry price. It fluctuates with the market.
-- `Settled P&L`: Actual profit or loss realised by closing a position.
-- `Claimable / Unsettled P&L`: Claimable P&L represents the portion of your settled P&L that is ready for withdrawal to your USDC balance. Unsettled P&L refers to a part of your realised P&L that is not yet available for withdrawal.
+## Withdrawing Realised P&L
 
-![](/assets/pnl-unsettled.png)
+A user's realised P&L can only be withdrawn once it has been settled/claimed on-chain.  
 
-<Callout type="info" emoji="⬇️">
+**Note:** Realising P&L by closing the position is **_not_** the same as settling/claiming P&L. To withdraw a positive P&L, it must be settled/claimed first. 
 
-For example:
+### Settling and Claiming your P&L
 
-1. You open a position (e.g., buying BTC-PERP) creating **unsettled P&L** of $0 (no initial change). Unsettled P&L reflects the potential profit or loss based on the current market price compared to your average entry price.
-2. The market price fluctuates. As the price moves, the difference between the current market price and your cost basis creates **claimable / unsettled P&L**. This is the potential profit or loss on your open position, but it's not yet locked in because the position remains open.
-3. You decide to close your position by selling all or part of your contract. The closing price is used to calculate your realised P&L. This is the actual profit or loss you lock in, based on the difference between the closing price and your cost basis.
-Once settled, this portion becomes **settled P&L**, which you can then withdraw to your USDC balance. Withdrawing your profits (settled P&L) depends on the P&L pool. If the pool has enough funds, your profits are available right away. If not, you might need to wait for others to settle their losses before you can withdraw your profits.
-4. You decide to close your position by selling all or part of your contract. The closing price is used to calculate your **realised P&L**. This is the actual profit or loss you lock in, based on the difference between the closing price and your cost basis.
-5. Settled P&L (a portion of realized P&L) becomes available for **withdrawal** from the [P&L pool](/profit-loss/profit-loss-pool) if the pool has enough funds. If not, you might need to wait for others to settle their losses before you can withdraw your profits.
-</Callout>
+To update the USDC balances available for withdrawal, your P&L must first be settled and claimed.
 
-**What is the difference between Settling P&L and Realising P&L?** 
+To do so, navigate to the `Unrealised PnL` tab and select `Claim`
 
-The key difference lies in the availability for withdrawal:
-- Realised P&L doesn't automatically guarantee immediate withdrawal. You need sufficient settled funds in the Market's P&L Pool, which comes from accumulated settled losses from other users.
-- Settled P&L is the realised profit that's already been processed and added to the pool. This is the portion you can withdraw immediately.
-
-
-### P&L Settlement and Withdrawal
-
-- Settling P&L moves profit/loss from a perpetual market to your USDC balance.
-- Requires claiming settled P&L before withdrawal.
-- P&L pool liquidity determines if settled [P&L pool](/profit-loss/profit-loss-pool) is claimable immediately.
-
-<Callout type="warning" emoji="⚠️">
-**Withdrawing realised P&L requires settling/claiming it first.** Closing your position realizes your P&L, but it doesn't automatically make it available for withdrawal.
-</Callout>
-
-### Claiming Settled P&L
-
-1. Navigate to the "Unsettled P&L" tab.
-2. Select "Claim" for specific positions or "Claim All".
-
-![](/assets/pnl-claim.png)
+![](public/assets/exUlUfTpdHsDCKImH_l4z_image.png)
 
 Users can claim positive P&L when:
 
-1.  the open position has been closed or reduced (i.e. your uP&L has been partially or wholly realised); _note: this step is only necessary when the P&L pool balance is limited_
+1.  the open position has been closed or reduced (i.e. your uP&L has been partially or wholly realised); _note: this step is only necessary when the pnl pool balance is limited_
 
-2.  the market's P&L Pool has available balances to claim; and
+2.  the market's P&L Pool has available balances to claim; and  
 
 3.  their Cost Basis is below the Entry Price for longs or above the Entry Price for shorts.
 
-<Callout type="warning" emoji="⚠️">
-**Automatic P&L Settlement**
+## What is the difference between Settling P&L and Realising P&L?
 
-P&L settlement is a permissionless action - anyone could settle two account's P&Ls at any time. 
-</Callout>
+The main difference between settling P&L and realising P&L is that realised P&L is available to be withdrawn and used elsewhere whereas settled P&L is not.  
 
-Settling the P&L will improve the accounts health. 
+Once realised, your P&L must also be settled and claimed before it can be withdrawn.
+
+### Realised P&L
+
+Realised P&L refers to the profit and loss that is realised by the user when they close their position.  
+
+**For example:**
+
+If you entered a long position on SOL at \$30 and SOL is now \$60; you would be in profit with an unrealised P&L of \$30.  
+
+Similarly, if you entered a short position on SOL at \$30 and SOL is now \$15; you would be in profit with an unrealised P&L of \$15.  
+
+The profit and loss in both those examples are known as **unrealised P&L** (uP&L) as that position is still open. The uP&L of the position will continuously change as the price of the asset changes.  
+
+Your P&L will not be **realised** until you close your position. Once you close your position, your uP&L will become **realised P&L** and you will be out of that perpetual futures position (i.e. you will no longer have exposure to the price movement of that underlying asset).  
