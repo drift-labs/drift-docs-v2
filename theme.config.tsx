@@ -339,6 +339,17 @@ const config: DocsThemeConfig = {
       </>
     );
   },
+  banner: {
+    key: "points-program",
+    text: (
+      <a
+        href="https://www.drift.trade/updates/update-drift-trader-points"
+        target="_self"
+      >
+        ✨ Drift Points Program is live! Learn more →
+      </a>
+    ),
+  },
   footer: {
     text: (
       <div>

@@ -30,13 +30,13 @@ The Clearinghouse will also pause risk-increasing trades that further increase l
 
 An individual user sub-account can have up to 32 outstanding orders at any one time. A Market Order sent has limits _within each instruction_ (so may be filled iteratively).
 
--   exceed 2% price impact (set by the market's `max_slippage_ratio` )
-
 Market Orders have the possibility of only being partially filled before expiration if any of the following limits occur:
 
 -   exceeds its slippage tolerance implied limit price
 
 -   exceeds its active time limit (for market orders, the Clearinghouse sets this at 30 seconds)
+
+-   exceed 2% price impact (set by the market's `max_slippage_ratio` )
 
 Within a single transaction, orders can be filled up by the `max_base_asset_amount` against the AMM. This maximum is set per market and calling of multiple fill instructions may work. For example, if the maximum amount was 10,000 SOL, an order for 100,000 SOL can be filled against the AMM in 10 instruction calls.
 
