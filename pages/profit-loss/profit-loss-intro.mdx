@@ -30,7 +30,7 @@ A user's current position on Drift is the cumulative sum of all their filled ord
 
 For example:
 
-1. You open a position (e.g., buying BTC-PERP) creating **unsettled P&L** of $0 (no initial change). Unsettled P&L reflects the potential profit or loss based on the current market price compared to your average entry price.
+1. You open a position (e.g., buying BTC-PERP) creating **unsettled P&L** of $0 (no initial change). Unsettled P&L reflects the potential profit or loss based on the current oracle price compared to your average entry price. *Note:* Immediately after you place a position, unsettled P&L can appear as positive or negative due to market trading above or below oracle price.
 2. As the price moves, the difference between the current oracle price and your cost basis creates **claimable / unsettled P&L**. This is the potential profit or loss on your open position.
 3. When you try to close the position, closing price is used to calculate your realised P&L. This is the actual profit or loss you lock in, based on the difference between the closing price and your cost basis.
 This portion becomes **settled P&L**, which you can then withdraw to your USDC balance. Withdrawing your profits (settled P&L) depends on the P&L pool. If the pool has enough funds, your profits are available right away. If not, you might need to wait for others to settle their losses before you can withdraw your profits.
