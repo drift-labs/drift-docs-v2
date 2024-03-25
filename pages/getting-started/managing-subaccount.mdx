@@ -1,3 +1,5 @@
+import { Callout } from "nextra-theme-docs";
+
 # Creating and Managing Subaccount
 
 Drift features a powerful subaccount tool for users to clearly separate positions within a single address.  
@@ -5,6 +7,10 @@ Drift features a powerful subaccount tool for users to clearly separate position
 Each subaccount's margin and positions are isolated from other subaccounts, meaning that users can trade on isolated margin via different subaccounts.  
 
 Each subaccount has independent positions, balances and margins, and can trade independently. Balances or liquidations from each subaccount will not affect other subaccounts. Each subaccount is cross-margined.
+
+<Callout type="info" emoji="ℹ️">
+A subaccount can hold up to 8 perpetual and 8 spot positions and 32 open orders total. A perpetual position with 0 base, but only unsettled P&L counts as an open position. 
+</Callout>
 
 ## Adding a Subaccount
 
