@@ -27,6 +27,8 @@ The cumulative funding rate is checked against user positions in case the off-ch
 
 \* _if no market trades and/or funding update calls occur within the first ~20 minutes of the hour, the next funding update will be delayed an additional hour._
 
+Funding payments may not pay out for markets that trade infrequently.
+
 ### Capped Symmetric Funding
 
 Drift Protocol aims to provide a symmetric funding rate to both sides of the market. When there is a long-short imbalance within the AMM, the protocol's market-specific Rebate Pool can be used to pay (or receive) the cost delta between the longs and the shorts.
